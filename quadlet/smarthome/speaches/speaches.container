@@ -7,11 +7,12 @@ ContainerName=speaches
 Image=ghcr.io/speaches-ai/speaches:0.9.0-rc.3-cuda
 AutoUpdate=registry
 Pull=newer
-Environment=enable_ui=False
+Environment=enable_ui=True
 Environment=log_level=debug
 Environment=WHISPER__MODEL=Systran/faster-distil-whisper-small.en
 Environment=WHISPER__compute_type=int8_float32
 Environment=SPEACHES_BASE_URL=http://localhost:8000
+Environment=chat_completion_base_url=http://localhost:11434/v1
 Environment=stt_model_ttl=-1
 Environment=tts_model_ttl=-1
 Environment=vad_model_ttl=-1
@@ -29,3 +30,5 @@ Notify=healthy
 
 [Service]
 Restart=always
+ExecStartPost=-/usr/sbin/curl -X 'POST' 'http://localhost:8000/api/ps/Systran%2Ffaster-distil-whisper-small.en' -H 'accept: application/json' -d ''
+ExecStartPost=-/usr/sbin/curl -X 'POST' 'http://localhost:8000/api/ps/speaches-ai%2FKokoro-82M-v1.0-ONNX-fp16' -H 'accept: application/json' -d ''

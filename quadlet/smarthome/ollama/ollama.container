@@ -28,4 +28,6 @@ HealthStartupRetries=100
 [Service]
 Restart=always
 ExecStartPost=-/usr/sbin/curl http://localhost:11434/api/pull -d '{"model": "qwen3:4b-instruct"}'
+ExecStartPost=-/usr/sbin/curl http://localhost:11434/api/pull -d '{"model": "qwen3:8b"}'
+ExecStartPost=-/usr/sbin/curl http://localhost:11434/api/pull -d '{"model": "gpt-oss:120b-cloud"}'
 ExecStartPost=-/usr/sbin/curl -s -X POST http://localhost:11434/api/generate -d '{"model":"qwen3:4b-instruct","keep_alive":-1}'

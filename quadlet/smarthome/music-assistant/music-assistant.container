@@ -5,6 +5,7 @@ Environment=LOG_LEVEL=debug
 Image=ghcr.io/music-assistant/server:latest
 PodmanArgs=--security-opt apparmor=unconfined
 Volume=/docker/music-assistant-server/data:/data:z
+Pod=smarthome.pod
 
 [Service]
 Restart=always

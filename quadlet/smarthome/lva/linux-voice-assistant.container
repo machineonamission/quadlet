@@ -49,15 +49,4 @@ Environment=WAKE_WORD_DIR=/app/wakewords/custom
 [Service]
 Restart=always
 #ExecStartPre=chown -R 1000:1000 /app/local /app/configuration
-ExecStartPost=/usr/sbin/podman exec linux-voice-assistant bash -c ' \
-for file in "$TARGET_DIR"/*.tflite; do \
-  model_name=$(basename "$file" .tflite) \
-  json_file="${file%.tflite}.json" \
-  cat <<EOF > "$json_file" \
-{ \
-  "type": "openWakeWord", \
-  "wake_word": "$model_name", \
-  "model": "${model_name}.tflite" \
-} \
-EOF \
-done'
+ExecStartPost=/usr/bin/bash -c 'shopt -s nullglob; for f in /srv/volumes/smarthome/lva/custom_wakewords/*.tflite; do m=$$(basename "$$f" .tflite); echo "{\"type\": \"openWakeWord\", \"wake_word\": \"$$m\", \"model\": \"$$m.tflite\"}" > "$$(dirname "$$f")/$$m.json"; done'

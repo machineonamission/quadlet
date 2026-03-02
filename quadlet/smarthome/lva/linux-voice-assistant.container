@@ -42,7 +42,7 @@ Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
 Environment=ENABLE_THINKING_SOUND=1
 #Environment=WAKE_MODEL=/app/wakewords/openWakeWord/ok_nabu_v0.1.tflite
 #Environment=STOP_MODEL=stop
-Environment=WAKE_WORD_DIR=/app/wakewords/custom
+Environment=WAKE_WORD_DIR=wakewords/custom
 #Environment=REFACTORY_SECONDS=0
 # --------------------------------------------------
 

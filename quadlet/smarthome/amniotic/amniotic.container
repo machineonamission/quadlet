@@ -1,7 +1,7 @@
 # amniotic.container
 [Container]
 ContainerName=amniotic
-Environment=AMNIOTIC__HA_CORE_API=https://127.0.0.1:8123/api
+Environment=AMNIOTIC__HA_CORE_API=https://homeassistant.machineonamission.me/api
 #Environment=SUPERVISOR_TOKEN=your_long_lived_access_token
 EnvironmentFile=amniotic-token.env
 Environment=AMNIOTIC__MQTT__HOSTNAME=127.0.0.1
@@ -9,6 +9,7 @@ Environment=AMNIOTIC__STREAM_URL=http://127.0.0.1:8080
 Environment=AMNIOTIC__PATH_AUDIO=/amniotic/audio
 Environment=AMNIOTIC__PATH_CONFIG=/amniotic/config
 Environment=AMNIOTIC__LOGGING=10
+Environment=FMTR_DEV=1
 Group=1000
 #HostName=amniotic
 Image=docker.io/fmtr/amniotic:latest

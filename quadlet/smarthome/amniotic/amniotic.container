@@ -1,13 +1,14 @@
 # amniotic.container
 [Container]
 ContainerName=amniotic
-Environment=AMNIOTIC__HA_CORE_API=https://localhost:8123/api
+Environment=AMNIOTIC__HA_CORE_API=https://127.0.0.1:8123/api
 #Environment=SUPERVISOR_TOKEN=your_long_lived_access_token
 EnvironmentFile=amniotic-token.env
-Environment=AMNIOTIC__MQTT__HOSTNAME=0.0.0.0
-Environment=AMNIOTIC__STREAM_URL=http://localhost:8080
+Environment=AMNIOTIC__MQTT__HOSTNAME=127.0.0.1
+Environment=AMNIOTIC__STREAM_URL=http://127.0.0.1:8080
 Environment=AMNIOTIC__PATH_AUDIO=/amniotic/audio
 Environment=AMNIOTIC__PATH_CONFIG=/amniotic/config
+Environment=AMNIOTIC__LOGGING=debug
 Group=1000
 #HostName=amniotic
 Image=docker.io/fmtr/amniotic:latest

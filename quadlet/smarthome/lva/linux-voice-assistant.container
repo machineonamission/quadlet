@@ -48,7 +48,7 @@ Environment=AUDIO_OUTPUT_DEVICE=pipewire/effect_input.normalized
 Environment=AUDIO_INPUT_DEVICE="RNNoise Mic"
 # --------------------------------------------------
 HealthCmd=timeout 1 bash -c \"cat < /dev/null > /dev/tcp/${HOST:-\"$$(hostname -I | awk '{print $$1}')\"}/$${PORT:-6053}\"
-HealthInterval=10s
+HealthInterval=3s
 HealthTimeout=10s
 HealthRetries=3
 Notify=healthy

@@ -18,8 +18,10 @@ AutoUpdate=registry
 Pull=newer
 EnvironmentFile=HA-healthcheck-token.env
 
-HealthCmd=bash -c 'curl -k https://localhost:8123/api/ -H "Authorization: Bearer $${TOKEN}"'
-HealthStartupCmd=bash -c 'curl -k https://localhost:8123/api/ -H "Authorization: Bearer $${TOKEN}"'
+
+
+HealthCmd=out=$(bash -c 'curl --fail-with-body -k https://localhost:8123/api/ -H "Authorization: Bearer $${TOKEN}"'); echo "$out"; echo "$out" | grep -q '{"message":"API running."}' || exit 1
+HealthStartupCmd=out=$(bash -c 'curl --fail-with-body -k https://localhost:8123/api/ -H "Authorization: Bearer $${TOKEN}"'); echo "$out"; echo "$out" | grep -q '{"message":"API running."}' || exit 1
 HealthInterval=10s
 HealthTimeout=10s
 HealthRetries=10

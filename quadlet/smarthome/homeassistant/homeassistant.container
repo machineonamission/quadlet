@@ -18,6 +18,9 @@ AutoUpdate=registry
 Pull=newer
 EnvironmentFile=HA-healthcheck-token.env
 
+AddCapability=NET_ADMIN
+AddCapability=NET_RAW
+
 
 
 HealthCmd=out=$(bash -c 'curl --fail-with-body -k https://localhost:8123/api/ -H "Authorization: Bearer $${TOKEN}"'); echo "$out"; echo "$out" | grep -q '{"message":"API running."}' || exit 1

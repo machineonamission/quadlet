@@ -16,17 +16,16 @@ Volume=/run/dbus:/run/dbus:ro
 Volume=/srv/quadlet/smarthome/dnshack.conf:/etc/resolv.conf:ro
 AutoUpdate=registry
 Pull=newer
+EnvironmentFile=HA-healthcheck-token.env
 
-# todo need to figure out some auth bullshit here
-#HealthCmd=curl \
-           #  -H "Authorization: Bearer TOKEN" \
-           #  -H "Content-Type: application/json" \
-           #  http://localhost:8123/api
-#HealthInterval=10s
-#HealthTimeout=10s
-#HealthRetries=10
-#Notify=healthy
-#HealthStartupRetries=100
+HealthCmd=curl -k https://localhost:8123/api/ -H "Authorization: Bearer ${TOKEN}"
+HealthInterval=10s
+HealthTimeout=10s
+HealthRetries=3
+Notify=healthy
+HealthStartupRetries=1000
+HealthStartupInterval=3s
+HealthOnFailure="kill"
 
 [Service]
 Restart=always

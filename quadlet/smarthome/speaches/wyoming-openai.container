@@ -9,18 +9,21 @@ ContainerName=wyoming_openai
 Image=ghcr.io/roryeckel/wyoming_openai:latest
 AutoUpdate=registry
 Pull=newer
-Environment=WYOMING_URI=tcp://0.0.0.0:10300
+Environment=WYOMING_URI=tcp://127.0.0.1:10300
 Environment=WYOMING_LOG_LEVEL=DEBUG
 Environment=WYOMING_LANGUAGES=en
 # Connecting via localhost because we are sharing the host network pod
-Environment=STT_OPENAI_URL=http://localhost:8000/v1
+Environment=STT_OPENAI_URL=http://127.0.0.1:8000/v1
 Environment=STT_MODELS=Systran/faster-distil-whisper-small.en
 Environment=STT_STREAMING_MODELS=Systran/faster-distil-whisper-small.en
 Environment=STT_BACKEND=SPEACHES
-Environment=TTS_OPENAI_URL=http://localhost:8000/v1
+Environment=STT-OPENAI-KEY=unused
+Environment=TTS_OPENAI_URL=http://127.0.0.1:8000/v1
 Environment=TTS_MODELS=speaches-ai/Kokoro-82M-v1.0-ONNX-fp16
 Environment=TTS_BACKEND=SPEACHES
 Environment=TTS_STREAMING_MODELS=speaches-ai/Kokoro-82M-v1.0-ONNX-fp16
+Environment=TTS-OPENAI-KEY=unused
+
 
 HealthCmd=bash -c 'exec 3<>/dev/tcp/127.0.0.1/10300 && echo "{\"type\":\"describe\"}" >&3 && read -t 2 response <&3; echo "$response"; echo "$response" | grep -q "info"'
 HealthStartupCmd=bash -c 'exec 3<>/dev/tcp/127.0.0.1/10300 && echo "{\"type\":\"describe\"}" >&3 && read -t 2 response <&3; echo "$response"; echo "$response" | grep -q "info"'

@@ -15,7 +15,7 @@ Environment=EMQX_HOST=localhost
 Environment=EMQX_TELEMETRY__ENABLE=false
 Environment=EMQX_NODE__NAME=emqx@localhost
 Image=docker.io/emqx/emqx:latest
-Volume=emqx_config.volume:/opt/emqx/etc
-Volume=emqx_log.volume:/opt/emqx/log
-Volume=emqx_data.volume:/opt/emqx/data
+Volume=emqx_config.volume:/opt/emqx/etc:z
+Volume=emqx_log.volume:/opt/emqx/log:z
+Volume=emqx_data.volume:/opt/emqx/data:z
 ContainerName=mqtt-broker

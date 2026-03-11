@@ -17,7 +17,7 @@ Volume=lva-configuration.volume:/app/configuration:U
 Volume=custom-wakewords.volume:/app/wakewords/custom:U
 Volume=/etc/localtime:/etc/localtime:ro
 Volume=/etc/timezone:/etc/timezone:ro
-Volume=/run/user/1000:/run/user/1000
+Volume=/run/user/1000:/run/user/1000:ro
 
 # Native Healthchecks
 #HealthCmd=pgrep -f linux_voice_assistant || exit 1

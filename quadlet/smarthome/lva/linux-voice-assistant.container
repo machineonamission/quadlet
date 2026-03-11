@@ -52,13 +52,13 @@ Environment=PULSE_COOKIE="/app/configuration/tmp_pulse_cookie"
 HealthCmd=ss -tulpn | grep :6053
 HealthStartupCmd=ss -tulpn | grep :6053
 #HealthStartupCmd=timeout 1 bash -c 'cat < /dev/null > /dev/tcp/$${HOST:-"$$(hostname -I | awk "{print \$$1}")"}/$${PORT:-6053}'
-#HealthInterval=10s
-#HealthTimeout=10s
-#HealthRetries=3
-#Notify=healthy
-#HealthStartupRetries=100
-#HealthStartupInterval=3s
-#HealthOnFailure="kill"
+HealthInterval=10s
+HealthTimeout=10s
+HealthRetries=3
+Notify=healthy
+HealthStartupRetries=100
+HealthStartupInterval=3s
+HealthOnFailure="kill"
 #Exec=--list-input-devices
 [Service]
 Restart=always

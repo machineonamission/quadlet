@@ -11,9 +11,9 @@ Environment=EMQX_LISTENERS__SSL__DEFAULT__SSL_OPTIONS__CACERTFILE="/opt/emqx/etc
 Environment=EMQX_LISTENERS__WS__DEFAULT__BIND=0.0.0.0:8083
 Environment=EMQX_LISTENERS__WSS__DEFAULT__BIND=0.0.0.0:8084
 Environment=EMQX_LOG__CONSOLE__LEVEL=debug
-Environment=EMQX_HOST=localhost
+Environment=EMQX_HOST=0.0.0.0
 Environment=EMQX_TELEMETRY__ENABLE=false
-Environment=EMQX_NODE__NAME=emqx@localhost
+Environment=EMQX_NODE__NAME=emqx@0.0.0.0
 Image=docker.io/emqx/emqx:latest
 Volume=emqx_config.volume:/opt/emqx/etc:z
 Volume=emqx_log.volume:/opt/emqx/log:z

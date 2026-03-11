@@ -45,20 +45,20 @@ Environment=ENABLE_THINKING_SOUND=1
 Environment=WAKE_WORD_DIR=wakewords/custom
 #Environment=REFACTORY_SECONDS=0
 Environment=AUDIO_OUTPUT_DEVICE=pipewire/sink.echo_cancel
-Environment=AUDIO_INPUT_DEVICE=source.echo_cancel
+Environment=AUDIO_INPUT_DEVICE=pipewire/source.echo_cancel
 # --------------------------------------------------
 #HealthCmd=timeout 1 bash -c 'cat < /dev/null > /dev/tcp/$${HOST:-"$$(hostname -I | awk "{print \$$1}")"}/$${PORT:-6053}'
 HealthCmd=ss -tulpn | grep :6053
 HealthStartupCmd=ss -tulpn | grep :6053
 #HealthStartupCmd=timeout 1 bash -c 'cat < /dev/null > /dev/tcp/$${HOST:-"$$(hostname -I | awk "{print \$$1}")"}/$${PORT:-6053}'
-HealthInterval=10s
-HealthTimeout=10s
-HealthRetries=3
-Notify=healthy
-HealthStartupRetries=100
-HealthStartupInterval=3s
-HealthOnFailure="kill"
-
+#HealthInterval=10s
+#HealthTimeout=10s
+#HealthRetries=3
+#Notify=healthy
+#HealthStartupRetries=100
+#HealthStartupInterval=3s
+#HealthOnFailure="kill"
+Exec=--list-input-devices
 [Service]
 Restart=always
 #ExecStartPre=chown -R 1000:1000 /app/local /app/configuration

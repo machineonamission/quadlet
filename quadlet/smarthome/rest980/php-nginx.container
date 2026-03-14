@@ -3,6 +3,7 @@ ContainerName=php-nginx
 Environment=NGINX_WEBROOT=/app
 Image=ghcr.io/webhippie/php-nginx:latest
 Volume=haconfig.volume/vacuum:/app:z
+Pod=smarthome.pod
 
 [Service]
 Restart=always

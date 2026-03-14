@@ -4,7 +4,7 @@ Environment=BLID=<BLID>
 Environment=PASSWORD=<PW>
 Environment=ROBOT_IP=<IP>
 Environment=FIRMWARE_VERSION=2
-Image=koalazak/rest980:latest
+Image=docker.io/koalazak/rest980:latest
 Pod=smarthome.pod
 
 

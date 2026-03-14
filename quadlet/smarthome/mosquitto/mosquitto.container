@@ -1,6 +1,6 @@
 [Container]
 ContainerName=mosquitto
-Image=eclipse-mosquitto
+Image=docker.io/eclipse-mosquitto
 Volume=mosquitto_config.volume:/mosquitto/etc:z
 Volume=mosquitto_log.volume:/mosquitto/log:z
 Volume=mosquitto_data.volume:/mosquitto/data:z

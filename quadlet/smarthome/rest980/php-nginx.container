@@ -1,7 +1,7 @@
 [Container]
 ContainerName=php-nginx
 Environment=NGINX_WEBROOT=/app
-Image=docker.io/webhippie/php-nginx:8.4
+Image=docker.io/webhippie/php-nginx:8.0
 Volume=/srv/volumes/smarthome/homeassistant/config/vacuum:/app:z
 Pod=smarthome.pod
 

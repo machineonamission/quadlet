@@ -1,5 +1,6 @@
 [Pod]
 PodName=smarthome
+Network=host
 
 [Install]
 WantedBy=multi-user.target default.target

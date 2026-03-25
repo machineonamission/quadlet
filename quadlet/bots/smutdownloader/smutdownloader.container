@@ -1,0 +1,12 @@
+[Unit]
+Wants=smutdownloader-build.service
+After=smutdownloader-build.service
+
+[Container]
+Pod=bots.pod
+ContainerName=smutdownloader
+Image=localhost/smutdownloader:latest
+Pull=missing
+
+[Service]
+Restart=always

@@ -1,0 +1,12 @@
+[Unit]
+Wants=gockai-build.service
+After=gockai-build.service
+
+[Container]
+Pod=bots.pod
+ContainerName=gockai
+Image=localhost/gockai:latest
+Pull=missing
+
+[Service]
+Restart=always

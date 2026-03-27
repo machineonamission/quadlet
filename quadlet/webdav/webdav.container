@@ -7,7 +7,7 @@ Environment=SSL_CERT=selfsigned
 EnvironmentFile=webdav.env
 Image=bytemark/webdav
 PublishPort=4430:443
-Volume=/srv/volumes/dav:/var/lib/dav
+Volume=/srv/volumes/dav:/var/lib/dav:z
 
 [Service]
 Restart=always

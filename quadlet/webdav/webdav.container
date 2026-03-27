@@ -1,13 +1,10 @@
 [Container]
 ContainerName=webdav
-Environment=AUTH_TYPE=Basic
-#Environment=USERNAME=test
-#Environment=PASSWORD=test
-Environment=SSL_CERT=selfsigned
-EnvironmentFile=webdav.env
-Image=bytemark/webdav
-PublishPort=4430:443
-Volume=/srv/volumes/dav:/var/lib/dav:z
+Image=ghcr.io/hacdias/webdav:latest
+PublishPort=6065:6065
+
+Volume=/srv/volumes/webdav:/data:z
+Volume=/srv/quadlet/quadlet/webdav/config.yml:/config.yml:ro
 
 [Service]
 Restart=always

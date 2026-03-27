@@ -4,7 +4,8 @@ Description=Linux Voice Assistant
 [Container]
 ContainerName=linux-voice-assistant
 #Image=ghcr.io/omaramin-2000/linux-voice-assistant:nightly
-Image=ghcr.io/machineonamission/linux-voice-assistant:nightly
+Image=ghcr.io/machineonamission/linux-voice-assistant:nightly-pw-volume
+Environment=VOLUME_CONTROLLER=pipewire
 AutoUpdate=registry
 Pull=newer
 AddCapability=SYS_NICE

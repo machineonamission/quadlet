@@ -17,6 +17,7 @@ Volume=custom-wakewords.volume:/app/wakewords/custom:z
 #Volume=/etc/localtime:/etc/localtime:ro
 #Volume=/etc/timezone:/etc/timezone:ro
 Volume=/run/pipewire:/run/pipewire:ro
+Network=host
 
 # Native Healthchecks
 #HealthCmd=pgrep -f linux_voice_assistant || exit 1

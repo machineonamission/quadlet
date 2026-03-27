@@ -4,7 +4,7 @@ Description=Linux Voice Assistant
 [Container]
 ContainerName=linux-voice-assistant
 #Image=ghcr.io/omaramin-2000/linux-voice-assistant:nightly
-Image=ghcr.io/ohf-voice/linux-voice-assistant:latest
+Image=ghcr.io/machineonamission/linux-voice-assistant:nightly
 AutoUpdate=registry
 Pull=newer
 AddCapability=SYS_NICE

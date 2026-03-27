@@ -1,0 +1,12 @@
+[Container]
+Environment=AUTH_TYPE=Basic
+#Environment=USERNAME=test
+#Environment=PASSWORD=test
+Environment=SSL_CERT=selfsigned
+EnvironmentFile=webdav.env
+Image=bytemark/webdav
+PublishPort=4430:443
+Volume=/srv/volumes/dav:/var/lib/dav
+
+[Service]
+Restart=always

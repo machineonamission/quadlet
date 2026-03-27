@@ -2,7 +2,7 @@
 ContainerName=alsa_volume_from_usb_hid
 AddDevice=/dev/snd
 AddDevice=/dev/input
-Image=ghcr.io/machineonamission/linux-voice-assistant:main
+Image=ghcr.io/machineonamission/alsa_volume_from_usb_hid:main
 
 [Service]
 Restart=always

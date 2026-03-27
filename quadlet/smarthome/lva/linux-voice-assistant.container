@@ -33,7 +33,7 @@ Volume=/run/pipewire:/run/pipewire:ro
 Environment=ENABLE_DEBUG=1
 #Environment=LVA_USER_ID=1000
 #Environment=LVA_USER_GROUP=1000
-Environment=CLIENT_NAME=linux_voice_assistant
+Environment=CLIENT_NAME=lva_bedroom
 
 Environment=LVA_PULSE_SERVER=unix:/run/pipewire/pulse/native
 Environment=LVA_XDG_RUNTIME_DIR=/run/pipewire

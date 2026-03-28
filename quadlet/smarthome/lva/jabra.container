@@ -6,8 +6,10 @@ GroupAdd=audio
 AutoUpdate=registry
 Pull=newer
 Pod=smarthome.pod
-AddDevice=/dev
+Volume=/dev/bus/usb:/dev/bus/usb:ro
 PodmanArgs=--privileged
+SecurityLabelDisable=true
+
 
 
 Environment=XDG_RUNTIME_DIR=/run/pipewire

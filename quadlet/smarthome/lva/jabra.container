@@ -1,0 +1,10 @@
+[Container]
+ContainerName=jabra
+Image=ghcr.io/machineonamission/lva-jabra-speak-410:main
+Volume=/run/pipewire:/run/pipewire:ro
+GroupAdd=audio
+AutoUpdate=registry
+Pull=newer
+
+Environment=XDG_RUNTIME_DIR=/run/pipewire
+Environment=PULSE_SERVER=unix:/run/pipewire/pulse/native

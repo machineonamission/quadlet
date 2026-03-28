@@ -5,6 +5,7 @@ Volume=/run/pipewire:/run/pipewire:ro
 GroupAdd=audio
 AutoUpdate=registry
 Pull=newer
+Pod=smarthome.pod
 
 Environment=XDG_RUNTIME_DIR=/run/pipewire
 Environment=PULSE_SERVER=unix:/run/pipewire/pulse/native

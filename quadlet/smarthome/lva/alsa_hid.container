@@ -7,7 +7,7 @@ Image=ghcr.io/machineonamission/alsa_volume_from_usb_hid:main
 Pod=smarthome.pod
 AutoUpdate=registry
 Pull=newer
-
+Environment=PYTHONUNBUFFERED=1
 Exec=-l debug
 
 [Service]

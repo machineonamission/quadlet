@@ -1,20 +1,23 @@
 [Container]
 ContainerName=jabra
 Image=ghcr.io/machineonamission/lva-jabra-speak-410:main
-Volume=/run/pipewire:/run/pipewire:ro
-GroupAdd=audio
+
 AutoUpdate=registry
 Pull=newer
+
 Pod=smarthome.pod
-Volume=/dev:/dev
-PodmanArgs=--privileged
-Unmask=all
+
+# usb communication
+AddDevice=/dev/bus/usb
+
+# pipewire (see LVA docs)
+Volume=/run/pipewire:/run/pipewire:ro
 SecurityLabelDisable=true
-AddCapability=all
-SeccompProfile=unconfined
-PodmanArgs=--security-opt apparmor=unconfined
-Environment=PYTHONUNBUFFERED=1
-
-
+GroupAdd=audio
 Environment=XDG_RUNTIME_DIR=/run/pipewire
 Environment=PULSE_SERVER=unix:/run/pipewire/pulse/native
+
+# volume
+Environment=VOLUME_CONTROL=pipewire
+[Service]
+Restart=always

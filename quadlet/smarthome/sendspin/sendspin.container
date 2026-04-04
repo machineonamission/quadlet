@@ -9,6 +9,7 @@ Environment=XDG_RUNTIME_DIR=/run/pipewire
 Environment=PULSE_SERVER=unix:/run/pipewire/pulse/native
 
 Group=29
+SecurityLabelDisable=true
 GroupAdd=audio
 HealthCmd=["curl","-f","http://localhost:8096/api/health"]
 HealthInterval=30s

@@ -18,7 +18,7 @@ SecurityLabelDisable=true
 GroupAdd=audio
 Environment=XDG_RUNTIME_DIR=/run/pipewire
 Environment=PULSE_SERVER=unix:/run/pipewire/pulse/native
-#Environment=SQUEEZELITE_MODE=PULSE
+Environment=SQUEEZELITE_LINEAR_VOLUME=Y
 Environment=SQUEEZELITE_NAME=Bedroom Sqeezelite
 Environment=SQUEEZELITE_VOLUME_CONTROL=PCM
 Environment=PGID=0

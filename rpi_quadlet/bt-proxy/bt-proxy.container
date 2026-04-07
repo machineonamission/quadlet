@@ -1,5 +1,5 @@
 [Container]
-ContainerName=theengs
+ContainerName=bt-proxy
 Image=ghcr.io/machineonamission/bt-proxy-docker:main
 PodmanArgs=--privileged
 Volume=/run/dbus:/run/dbus:ro

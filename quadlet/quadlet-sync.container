@@ -6,6 +6,9 @@ PodmanArgs=--privileged
 AutoUpdate=registry
 Pull=newer
 
+Environment=REPO=http://github.com/machineonamission/quadlet.git
+Environment=REPO_SUBDIR=quadlet
+
 # Map the host systemd folder to /host-systemd inside the container
 Volume=/etc/containers/systemd:/host-systemd:rw
 

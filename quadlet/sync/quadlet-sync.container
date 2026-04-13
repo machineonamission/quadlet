@@ -11,6 +11,7 @@ Environment=REPO_SUBDIR=quadlet
 
 # Map the host systemd folder to /host-systemd inside the container
 Volume=/etc/containers/systemd:/host-systemd:rw
+Volume=quadlet-sync-persist.volume:/persist:z
 
 # Run the webhook server on port 9191
 PublishPort=9191:9191

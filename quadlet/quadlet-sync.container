@@ -2,9 +2,8 @@
 ContainerName=quadlet-sync
 # Tell Podman to build the image from the directory we just made
 Image=ghcr.io/machineonamission/quadlet-sync:main
-# These are REQUIRED for nsenter to be able to talk to the host systemd
-Privileged=true
-PidMode=host
+PodmanArgs=--privileged
+
 
 # Map the host systemd folder to /host-systemd inside the container
 Volume=/etc/containers/systemd:/host-systemd:rw

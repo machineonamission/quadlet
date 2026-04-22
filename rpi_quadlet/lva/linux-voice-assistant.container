@@ -21,6 +21,8 @@ Volume=custom-wakewords.volume:/app/wakewords/custom:z
 #Volume=/etc/timezone:/etc/timezone:ro
 Volume=/run/pipewire:/run/pipewire:ro
 
+Exec=--sendspin-url ws://192.168.0.2:8927/sendspin
+
 # Native Healthchecks
 #HealthCmd=pgrep -f linux_voice_assistant || exit 1
 #HealthInterval=30s

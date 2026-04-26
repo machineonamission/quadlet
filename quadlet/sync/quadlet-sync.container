@@ -28,3 +28,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
+
+[Unit]
+After=net.pod
+Wants=net.pod

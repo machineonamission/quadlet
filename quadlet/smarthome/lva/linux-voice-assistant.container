@@ -4,8 +4,10 @@ Description=Linux Voice Assistant
 [Container]
 Pod=smarthome.pod
 ContainerName=linux-voice-assistant
-Image=ghcr.io/machineonamission/linux-voice-assistant:led-pipewire-wakelisten
+#Image=ghcr.io/machineonamission/linux-voice-assistant:led-pipewire-wakelisten
+Image=ghcr.io/machineonamission/linux-voice-assistant:led-pipewire-wakelisten-2
 Environment=VOLUME_CONTROLLER=pipewire
+Environment=SENDSPIN_URL=ws://192.168.0.2:8927/sendspin
 #Image=ghcr.io/machineonamission/linux-voice-assistant:leds-and-buttons-events
 AutoUpdate=registry
 Pull=newer
@@ -27,6 +29,7 @@ Volume=/run/pipewire:/run/pipewire:ro
 #HealthRetries=3
 #HealthStartupRetries=100
 
+#Exec=--sendspin-url "ws://192.168.0.2:8927/sendspin" --sendspin-static-delay-ms 100 --sendspin-client-id lva_bedroom
 
 
 # --- .env file ---

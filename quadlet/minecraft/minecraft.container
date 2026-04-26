@@ -2,7 +2,7 @@
 ContainerName=minecraft
 Image=docker.io/itzg/minecraft-server
 PublishPort=25565:25565
-Volume=minecraft.volume:/data
+Volume=minecraft.volume:/data:z
 
 Environment=EULA=TRUE
 Environment=MODPACK_PLATFORM=AUTO_CURSEFORGE

@@ -1,6 +1,6 @@
 [Container]
 ContainerName=bt-proxy
-Image=ghcr.io/machineonamission/bt-proxy-docker:main
+Image=ghcr.io/denerva/bt-proxy:main
 PodmanArgs=--privileged
 Volume=/run/dbus:/run/dbus:ro
 Volume=/var/run/dbus:/var/run/dbus:ro

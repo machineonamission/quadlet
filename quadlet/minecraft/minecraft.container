@@ -16,3 +16,6 @@ Network=host
 Environment=MOTD="HOSMP '26"
 Environment=OPS=melody_florum
 Environment=ICON=http://..../some/image.png
+
+[Service]
+Restart=always

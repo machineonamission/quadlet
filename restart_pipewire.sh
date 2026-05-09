@@ -2,3 +2,5 @@ sudo systemctl --machine=melody@.host --user restart pipewire wireplumber pipewi
 sudo alsactl restore
 sudo systemctl restart linux-voice-assistant
 sudo alsactl restore
+
+#systemctl restart pipewire wireplumber pipewire-pulse

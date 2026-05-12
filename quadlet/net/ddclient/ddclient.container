@@ -1,0 +1,7 @@
+[Container]
+ContainerName=ddclient
+Image=lscr.io/linuxserver/ddclient:latest
+Volume=ddclient-config.volume:/config:z
+
+[Service]
+Restart=always

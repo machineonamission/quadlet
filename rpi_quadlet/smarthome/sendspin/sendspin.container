@@ -1,6 +1,9 @@
 [Container]
+Ulimit=rtprio=90:90
+Ulimit=memlock=-1:-1
 AddCapability=NET_ADMIN
 AddCapability=NET_RAW
+AddCapability=SYS_NICE
 AddDevice=/dev/bus/usb:/dev/bus/usb
 ContainerName=sendspin-client
 Environment=SENDSPIN_SERVER=auto

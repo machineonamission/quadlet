@@ -1,0 +1,5 @@
+[Container]
+Exec=ghcr.io/zebradil/cloudflare-dynamic-dns:latest '--config=/config.yaml' '--run-every=5m'
+Image=run
+Network=host
+Volume=/srv/volumes/net/ddns/config.yaml:/config.yaml:z

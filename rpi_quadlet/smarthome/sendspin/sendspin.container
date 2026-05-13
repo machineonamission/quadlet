@@ -4,7 +4,7 @@ Ulimit=memlock=-1:-1
 AddCapability=NET_ADMIN
 AddCapability=NET_RAW
 AddCapability=SYS_NICE
-AddDevice=/dev/bus/usb:/dev/bus/usb
+#AddDevice=/dev/bus/usb:/dev/bus/usb
 ContainerName=sendspin-client
 Environment=SENDSPIN_SERVER=auto
 Environment=TZ=America/Chicago
@@ -16,15 +16,14 @@ AutoUpdate=registry
 Pull=newer
 Pod=smarthome.pod
 
-AddDevice=/dev/snd
+#AddDevice=/dev/snd
 
 
 Image=ghcr.io/machineonamission/sendspin-cli-docker:main
 Label=com.centurylinklabs.watchtower.enable=true
 Network=host
-PodmanArgs=--security-opt apparmor=unconfined --privileged
+#PodmanArgs=--security-opt apparmor=unconfined --privileged
 SeccompProfile=unconfined
-Volume=/var/run/dbus:/var/run/dbus:ro
 #Volume=/run/user/1000/pulse:/run/user/1000/pulse
 #Volume=/run/user/1000/pipewire-0:/run/user/1000/pipewire-0
 
@@ -34,7 +33,7 @@ Environment=DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
 
 SecurityLabelDisable=true
 GroupAdd=audio
-Volume=/run/pipewire:/run/pipewire:ro
+Volume=/run/pipewire:/run/pipewire:z
 Environment=XDG_RUNTIME_DIR=/run/pipewire
 Environment=PULSE_SERVER=unix:/run/pipewire/pulse/native
 

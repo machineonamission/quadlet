@@ -1,5 +1,9 @@
 [Container]
-Exec=ghcr.io/zebradil/cloudflare-dynamic-dns:latest '--config=/config.yaml' '--run-every=5m'
-Image=run
+ContainerName=cloudflare-ddns
+Image=timothyjmiller/cloudflare-ddns:latest
 Network=host
-Volume=/srv/volumes/net/ddns/config.yaml:/config.yaml:z
+EnvironmentFile=ddns.env
+
+
+[Service]
+Restart=always

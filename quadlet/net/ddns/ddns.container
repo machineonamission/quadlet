@@ -3,6 +3,7 @@ ContainerName=cloudflare-ddns
 Image=timothyjmiller/cloudflare-ddns:latest
 Network=host
 EnvironmentFile=ddns.env
+Pod=net.pod
 
 
 [Service]

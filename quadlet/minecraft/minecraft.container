@@ -10,7 +10,7 @@ Environment=MODPACK_PLATFORM=AUTO_CURSEFORGE
 Environment=CF_API_KEY=$2a$10$bL4bIL5pUWqfcO7KQtnMReakwtfHbNKh6v1uTpKlzhwoueEJQnPnm
 Environment=CF_PAGE_URL=https://www.curseforge.com/minecraft/modpacks/hosmp-26
 Environment=MAX_MEMORY=8G
-Environment=MIN_MEMORY=4G
+Environment=MIN_MEMORY=8G
 AutoUpdate=registry
 Pull=newer
 Network=host

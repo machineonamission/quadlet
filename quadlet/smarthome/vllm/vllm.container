@@ -15,19 +15,14 @@ Environment=HF_HOME=/root/.cache/huggingface
 
 Volume=vllm.volume:/root/.cache/huggingface:z
 
-Exec=--model Qwen/Qwen3-ASR-1.7B \
-     --max-model-len 896 \
+Exec=--max-model-len 896 \
      --dtype auto \
      --host 0.0.0.0 \
-     --port 8085
+     --port 8085 \
+     --load-in-8bit \
+     Qwen/Qwen3-ASR-1.7B
 
 AddDevice=nvidia.com/gpu=all
-
-
-# GPU
-AddDevice=/dev/nvidia0
-AddDevice=/dev/nvidiactl
-AddDevice=/dev/nvidia-uvm
 
 [Service]
 Restart=always

@@ -14,7 +14,7 @@ Volume=/etc/containers/systemd/llamacpp.ini:/config.ini:ro,z
 AddDevice=nvidia.com/gpu=all
 Exec=--jinja \
           --n-gpu-layers -1 \
-          --flash-attn \
+          --flash-attn on \
           --prio 3 \
           --prio-batch 3 \
           --batch-size 2048 \

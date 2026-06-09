@@ -2,6 +2,8 @@
 Description=Kokoro TTS FastAPI
 
 [Container]
+Pod=smarthome.pod
+ContainerName=kokoro
 AutoUpdate=registry
 Pull=newer
 Image=ghcr.io/remsky/kokoro-fastapi-gpu:latest

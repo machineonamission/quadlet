@@ -15,6 +15,7 @@ AddDevice=nvidia.com/gpu=all
 Exec=--jinja \
           --n-gpu-layers -1 \
           --flash-attn on \
+          --reasoning off \
           --prio 3 \
           --prio-batch 3 \
           --batch-size 2048 \

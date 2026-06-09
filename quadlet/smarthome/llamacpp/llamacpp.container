@@ -16,6 +16,7 @@ Exec=--jinja \
           --n-gpu-layers -1 \
           --flash-attn on \
           --reasoning off \
+          --reasoning-format none \
           --prio 3 \
           --prio-batch 3 \
           --batch-size 2048 \
@@ -26,6 +27,7 @@ Exec=--jinja \
           --alias Qwen3-ASR \
           --ctx-size 896 \
           --parallel 1 \
+          --jinja \
           --cache-type-k q8_0 \
           --host 0.0.0.0 \
           --port 8085

@@ -7,7 +7,7 @@ Pod=smarthome.pod
 ContainerName=vllm
 AutoUpdate=registry
 Pull=newer
-Image=vllm/vllm-openai:latest
+Image=docker.io/vllm/vllm-openai:latest
 
 # Model
 #Environment=HUGGING_FACE_HUB_TOKEN=your_token_here

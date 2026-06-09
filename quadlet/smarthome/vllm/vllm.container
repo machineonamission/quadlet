@@ -15,7 +15,7 @@ Environment=HF_HOME=/root/.cache/huggingface
 
 Volume=vllm.volume:/root/.cache/huggingface:z
 
-Exec=--model ggml-org/Qwen3-ASR-1.7B \
+Exec=--model Qwen/Qwen3-ASR-1.7B \
      --max-model-len 896 \
      --dtype auto \
      --host 0.0.0.0 \

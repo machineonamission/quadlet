@@ -6,13 +6,13 @@
 [Container]
 Pod=smarthome.pod
 ContainerName=llamacpp
-Image=ghcr.io/ggml-org/llama.cpp:full-cuda13
+Image=ghcr.io/ggml-org/llama.cpp:server-cuda13
 AutoUpdate=registry
 Pull=newer
 Volume=llamacpp-models.volume:/models:z
 Volume=/etc/containers/systemd/llamacpp.ini:/config.ini:ro,z
 AddDevice=nvidia.com/gpu=all
-Exec=--config /config.ini
+Exec=--config /config.ini --port 8085 --host 0.0.0.0
 
 [Service]
 Restart=always

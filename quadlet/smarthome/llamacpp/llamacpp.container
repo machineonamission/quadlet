@@ -1,0 +1,20 @@
+#[Unit]
+#Description=Ollama Brain
+#Wants=ollama_fork-build.service
+#After=ollama_fork-build.service
+
+[Container]
+Pod=smarthome.pod
+ContainerName=llamacpp
+Image=ghcr.io/ggml-org/llama.cpp:full-cuda13
+AutoUpdate=registry
+Pull=newer
+Volume=llamacpp-models.volume:/models:z
+Volume=/etc/containers/systemd/llamacpp.ini:/config.ini:ro,z
+AddDevice=nvidia.com/gpu=all
+Exec=--config /config.ini
+
+[Service]
+Restart=always
+
+#ExecStartPost=-/usr/sbin/curl -s -X POST http://localhost:11434/api/generate -d '{"model":"gemma4:e2b","keep_alive":-1}'

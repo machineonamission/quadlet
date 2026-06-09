@@ -1,0 +1,37 @@
+[Unit]
+Description=vLLM Qwen3-ASR
+After=network-online.target
+
+[Container]
+Pod=smarthome.pod
+ContainerName=vllm
+AutoUpdate=registry
+Pull=newer
+Image=vllm/vllm-openai:latest
+
+# Model
+#Environment=HUGGING_FACE_HUB_TOKEN=your_token_here
+Environment=HF_HOME=/root/.cache/huggingface
+
+Volume=vllm.volume:/root/.cache/huggingface:z
+
+Exec=--model ggml-org/Qwen3-ASR-1.7B \
+     --max-model-len 896 \
+     --dtype auto \
+     --host 0.0.0.0 \
+     --port 8000
+
+AddDevice=nvidia.com/gpu=all
+
+
+# GPU
+AddDevice=/dev/nvidia0
+AddDevice=/dev/nvidiactl
+AddDevice=/dev/nvidia-uvm
+
+[Service]
+Restart=always
+TimeoutStartSec=600
+
+[Install]
+WantedBy=default.target

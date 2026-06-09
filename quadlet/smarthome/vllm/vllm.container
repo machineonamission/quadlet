@@ -19,7 +19,7 @@ Exec=--max-model-len 896 \
      --dtype auto \
      --host 0.0.0.0 \
      --port 8085 \
-     --load-in-8bit \
+     --quantization int8 \
      Qwen/Qwen3-ASR-1.7B
 
 AddDevice=nvidia.com/gpu=all

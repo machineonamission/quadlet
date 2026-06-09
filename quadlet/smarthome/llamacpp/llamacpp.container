@@ -12,7 +12,22 @@ Pull=newer
 Volume=llamacpp-models.volume:/models:z
 Volume=/etc/containers/systemd/llamacpp.ini:/config.ini:ro,z
 AddDevice=nvidia.com/gpu=all
-Exec=--config /config.ini --port 8085 --host 0.0.0.0
+Exec=--jinja \
+          --n-gpu-layers -1 \
+          --flash-attn \
+          --prio 3 \
+          --prio-batch 3 \
+          --batch-size 2048 \
+          --ubatch-size 1024 \
+          --reasoning-budget-message '... Taking too long, need to answer.' \
+          --hf-repo ggml-org/Qwen3-ASR-1.7B-GGUF \
+          --hf-file Qwen3-ASR-1.7B-Q8_0.gguf \
+          --alias Qwen3-ASR \
+          --ctx-size 896 \
+          --parallel 1 \
+          --cache-type-k q8_0 \
+          --host 0.0.0.0 \
+          --port 8085
 
 [Service]
 Restart=always

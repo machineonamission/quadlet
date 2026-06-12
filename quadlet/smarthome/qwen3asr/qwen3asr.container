@@ -21,9 +21,9 @@ Volume=qwen3asr.volume:/root/.cache/huggingface:z
 
 Environment=QWEN3_ASR_MODEL_ID=Qwen/Qwen3-ASR-0.6B
 Environment=VLLM_EXTRA_ARGS=--enforce-eager
-Exec=--gpu-memory-utilization 0.55 \
-  --max-model-len 4096 \
-  --max-num-seqs 4 \
+Exec=--gpu-memory-utilization 0.65 \
+  --max-model-len 256 \
+  --max-num-seqs 1 \
   --kv-cache-dtype fp8 \
   --enforce-eager
 

@@ -19,6 +19,8 @@ PodmanArgs=--ipc=host
 
 Volume=qwen3asr.volume:/root/.cache/huggingface:z
 
+Environment=QWEN3_ASR_MODEL_ID=Qwen/Qwen3-ASR-0.6B
+
 [Service]
 Restart=always
 RestartSec=15

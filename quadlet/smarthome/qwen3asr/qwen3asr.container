@@ -20,9 +20,12 @@ PodmanArgs=--ipc=host
 Volume=qwen3asr.volume:/root/.cache/huggingface:z
 
 Environment=QWEN3_ASR_MODEL_ID=Qwen/Qwen3-ASR-0.6B
-Environment=GPU_MEMORY_UTILIZATION=0.65
 Environment=VLLM_EXTRA_ARGS=--enforce-eager
-Exec=--gpu-memory-utilization 0.65
+Exec=--gpu-memory-utilization 0.55 \
+  --max-model-len 4096 \
+  --max-num-seqs 4 \
+  --kv-cache-dtype fp8 \
+  --enforce-eager
 
 [Service]
 Restart=always

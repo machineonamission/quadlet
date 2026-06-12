@@ -23,8 +23,6 @@ Environment=QWEN3_ASR_MODEL_ID=Qwen/Qwen3-ASR-0.6B
 
 [Service]
 Restart=always
-RestartSec=15
-TimeoutStartSec=600
 
 [Install]
 WantedBy=multi-user.target

@@ -3,7 +3,7 @@
 ContainerName=wireguard
 Image=ghcr.io/wg-easy/wg-easy:latest
 AutoUpdate=registry
-Pod=net.pod
+#Pod=net.pod
 
 Volume=wireguard.volume:/etc/wireguard:Z
 Network=wireguard.network

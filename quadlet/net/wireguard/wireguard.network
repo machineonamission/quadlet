@@ -1,0 +1,3 @@
+[Network]
+NetworkName=wireguard
+IPv6=true

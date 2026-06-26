@@ -23,8 +23,8 @@ Sysctl=net.ipv6.conf.all.forwarding=1
 Sysctl=net.ipv6.conf.default.forwarding=1
 
 #EnvironmentFile=wireguard.env
-#Environment="WG_POST_UP=nft add table ip wg-easy; nft add chain ip wg-easy POSTROUTING { type nat hook postrouting priority 100 \; }; nft add rule ip wg-easy POSTROUTING oifname eth0 masquerade; nft add chain ip wg-easy INPUT { type filter hook input priority 0 \; }; nft add rule ip wg-easy INPUT udp dport 51820 accept; nft add chain ip wg-easy FORWARD { type filter hook forward priority 0 \; }; nft add rule ip wg-easy FORWARD iifname wg0 accept; nft add rule ip wg-easy FORWARD oifname wg0 accept;"
-#Environment="WG_PRE_DOWN=nft delete table ip wg-easy;"
+Environment="WG_POST_UP=nft add table ip wg-easy; nft add chain ip wg-easy POSTROUTING { type nat hook postrouting priority 100 \; }; nft add rule ip wg-easy POSTROUTING oifname eth0 masquerade; nft add chain ip wg-easy INPUT { type filter hook input priority 0 \; }; nft add rule ip wg-easy INPUT udp dport 51820 accept; nft add chain ip wg-easy FORWARD { type filter hook forward priority 0 \; }; nft add rule ip wg-easy FORWARD iifname wg0 accept; nft add rule ip wg-easy FORWARD oifname wg0 accept;"
+Environment="WG_PRE_DOWN=nft delete table ip wg-easy;"
 
 [Install]
 # this is used to start the container on boot

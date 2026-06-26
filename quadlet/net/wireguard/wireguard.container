@@ -9,7 +9,6 @@ Volume=wireguard.volume:/etc/wireguard:Z
 Network=wireguard.network
 PublishPort=51820:51820/udp
 PublishPort=51821:51821/tcp
-
 # this is used to allow access over HTTP
 # remove this when using a reverse proxy
 #Environment=INSECURE=true
@@ -22,6 +21,8 @@ Sysctl=net.ipv4.conf.all.src_valid_mark=1
 Sysctl=net.ipv6.conf.all.disable_ipv6=0
 Sysctl=net.ipv6.conf.all.forwarding=1
 Sysctl=net.ipv6.conf.default.forwarding=1
+
+EnvironmentFile=wireguard.env
 
 [Install]
 # this is used to start the container on boot

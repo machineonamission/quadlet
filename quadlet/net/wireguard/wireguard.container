@@ -11,7 +11,7 @@ PublishPort=51820:51820/udp
 PublishPort=51821:51821/tcp
 # this is used to allow access over HTTP
 # remove this when using a reverse proxy
-#Environment=INSECURE=true
+Environment=INSECURE=true
 
 AddCapability=NET_ADMIN
 AddCapability=SYS_MODULE

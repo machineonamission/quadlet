@@ -1,4 +1,6 @@
-# /etc/containers/systemd/qwen3-asr.container
+[Unit]
+Wants=homeassistant.container
+Before=homeassistant.container
 
 [Unit]
 Description=Qwen3-ASR

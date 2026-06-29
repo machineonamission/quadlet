@@ -1,7 +1,6 @@
-#[Unit]
-#Description=Ollama Brain
-#Wants=ollama_fork-build.service
-#After=ollama_fork-build.service
+[Unit]
+Wants=homeassistant.container
+Before=homeassistant.container
 
 [Container]
 Pod=smarthome.pod

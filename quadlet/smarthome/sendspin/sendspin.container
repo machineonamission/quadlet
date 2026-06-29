@@ -1,3 +1,7 @@
+[Unit]
+Wants=music-assistant.container
+Before=music-assistant.container
+
 [Container]
 AddCapability=NET_ADMIN
 AddCapability=NET_RAW

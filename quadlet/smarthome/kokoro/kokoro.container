@@ -1,5 +1,7 @@
 [Unit]
 Description=Kokoro TTS FastAPI
+Wants=homeassistant.container
+Before=homeassistant.container
 
 [Container]
 Pod=smarthome.pod

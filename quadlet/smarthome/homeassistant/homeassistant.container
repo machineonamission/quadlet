@@ -1,7 +1,5 @@
 [Unit]
-Description=Home Assistant Core
-After=ollama.container linux-voice-assistant.container matter-server.container mosquitto.container
-Wants=ollama.container linux-voice-assistant.container matter-server.container mosquitto.container
+Description=Home Assistant
 
 [Container]
 Pod=smarthome.pod

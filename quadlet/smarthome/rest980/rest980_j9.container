@@ -1,3 +1,7 @@
+[Unit]
+Wants=homeassistant.container
+Before=homeassistant.container
+
 [Container]
 ContainerName=rest980_j9
 Environment=PORT=3003

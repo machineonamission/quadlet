@@ -3,7 +3,6 @@ Wants=gockai-build.service
 After=gockai-build.service
 
 [Container]
-Pod=bots.pod
 ContainerName=gockai
 Image=ghcr.io/cymkeight/gockai:main
 AutoUpdate=registry
@@ -11,3 +10,5 @@ Pull=newer
 
 [Service]
 Restart=always
+[Install]
+WantedBy=bots.target

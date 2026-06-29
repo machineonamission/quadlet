@@ -1,0 +1,7 @@
+[Unit]
+Description=Bots
+After=net.target
+Wants=net.target
+
+[Install]
+WantedBy=multi-user.target default.target

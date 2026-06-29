@@ -1,0 +1,4 @@
+[Unit]
+Description=Smarthome
+After=net.target
+Wants=net.target

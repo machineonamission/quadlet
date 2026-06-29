@@ -3,7 +3,6 @@ Wants=melutils-build.service
 After=melutils-build.service
 
 [Container]
-Pod=bots.pod
 ContainerName=melutils
 Image=ghcr.io/machineonamission/melutils:master
 AutoUpdate=registry
@@ -13,3 +12,5 @@ Volume=/srv/volumes/bot/melutils/database.sqlite:/app/database.sqlite:z
 
 [Service]
 Restart=always
+[Install]
+WantedBy=bots.target

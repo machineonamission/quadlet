@@ -3,7 +3,6 @@ Wants=gork-build.service
 After=gork-build.service
 
 [Container]
-Pod=bots.pod
 ContainerName=gork
 Image=ghcr.io/machineonamission/gorkpy:main
 AutoUpdate=registry
@@ -12,3 +11,5 @@ Volume=/srv/volumes/bot/gork:/app/persist:z
 
 [Service]
 Restart=always
+[Install]
+WantedBy=bots.target

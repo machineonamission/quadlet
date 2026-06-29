@@ -66,6 +66,12 @@ Notify=healthy
 HealthStartupRetries=100
 HealthStartupInterval=3s
 HealthOnFailure="kill"
+# esphome
+PublishPort=6053:6053
+# peripheral api
+PublishPort=6055:6055
+
+
 #Exec=--list-input-devices
 [Service]
 Restart=always

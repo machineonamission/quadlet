@@ -7,7 +7,7 @@ ContainerName=kokoro
 AutoUpdate=registry
 Pull=newer
 Image=ghcr.io/remsky/kokoro-fastapi-gpu:latest
-#PublishPort=8880:8880
+PublishPort=8880:8880
 Volume=kokoro.container:/voices:z
 Environment=KOKORO_VOICES_DIR=/voices
 AddDevice=nvidia.com/gpu=all

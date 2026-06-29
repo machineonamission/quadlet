@@ -19,7 +19,7 @@ AutoUpdate=registry
 Pull=newer
 EnvironmentFile=HA-healthcheck-token.env
 Environment=DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
-
+Network=host
 AddCapability=NET_ADMIN
 AddCapability=NET_RAW
 AddCapability=SYS_ADMIN

@@ -13,6 +13,8 @@ EnvironmentFile=cloudflare-token.env
 Network=host
 AutoUpdate=registry
 Pull=newer
+Network=host
+
 
 
 [Service]

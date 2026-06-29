@@ -6,3 +6,5 @@ Volume=adguard-workdir.volume:/opt/adguardhome/work:z
 Volume=adguard-config.volume:/opt/adguardhome/conf:z
 AutoUpdate=registry
 Pull=newer
+PublishPort=53:53
+PublishPort=8081:8081

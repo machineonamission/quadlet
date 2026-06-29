@@ -1,6 +1,5 @@
 [Pod]
 PodName=net
-Network=host
 
 [Install]
 WantedBy=multi-user.target default.target

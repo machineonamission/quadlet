@@ -16,7 +16,7 @@ Pull=newer
 Network=host
 Environment=MOTD="MWFCraft! (NOT HOSMP)"
 Environment=OPS=melody_florum
-Environment=ICON=https://raw.githubusercontent.com/machineonamission/quadlet/refs/heads/main/quadlet/minecraft/hoslogo.png
+Environment=ICON=https://cdn.discordapp.com/icons/1341555504006037616/9ebb8a63f39ed8d3115481bc1672d044.png?size=64
 HealthOnFailure=restart
 Environment=ALLOW_FLIGHT=true
 

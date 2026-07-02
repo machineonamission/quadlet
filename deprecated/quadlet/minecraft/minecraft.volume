@@ -1,3 +1,0 @@
-[Volume]
-Device=/srv/volumes/minecraft
-Type=bind

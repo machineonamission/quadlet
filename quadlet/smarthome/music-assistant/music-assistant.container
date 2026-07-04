@@ -15,5 +15,14 @@ Volume=/run/dbus:/run/dbus:ro
 Volume=/var/run/dbus:/var/run/dbus:ro
 Environment=DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
 
+SecurityLabelDisable=true
+GroupAdd=audio
+Volume=/run/pipewire:/run/pipewire:ro
+Environment=XDG_RUNTIME_DIR=/run/pipewire
+Environment=PULSE_SERVER=unix:/run/pipewire/pulse/native
+AddDevice=/dev/bus/usb:/dev/bus/usb
+AddCapability=NET_ADMIN
+AddCapability=NET_RAW
+
 [Service]
 Restart=always

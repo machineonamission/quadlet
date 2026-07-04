@@ -15,7 +15,8 @@ AddCapability=NET_ADMIN
 AddCapability=NET_RAW
 AddCapability=SYS_ADMIN
 
-Exec=--friendly-name "Kitchen BT Proxy" --port 6054 --log-level DEBUG --active False
+Exec=--friendly-name "Kitchen BT Proxy" --port 6054 --log-level DEBUG
+#--active False
 
 [Service]
 Restart=always

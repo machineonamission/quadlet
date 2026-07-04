@@ -33,9 +33,9 @@ Environment=DBUS_SYSTEM_BUS_ADDRESS=unix:path=/run/dbus/system_bus_socket
 
 SecurityLabelDisable=true
 GroupAdd=audio
-Volume=/run/pipewire:/run/pipewire:z
-Environment=XDG_RUNTIME_DIR=/run/pipewire
-Environment=PULSE_SERVER=unix:/run/pipewire/pulse/native
+Volume=/run/user/1000:/run/user/1000
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
 
 Exec=daemon --name "Kitchen Sendspin" --id sendspin-kitchen
 

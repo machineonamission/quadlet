@@ -11,11 +11,11 @@ Pod=smarthome.pod
 AddDevice=/dev/bus/usb
 
 # pipewire (see LVA docs)
-Volume=/run/pipewire:/run/pipewire:ro
+Volume=/run/user/1000:/run/user/1000
 SecurityLabelDisable=true
 GroupAdd=audio
-Environment=XDG_RUNTIME_DIR=/run/pipewire
-Environment=PULSE_SERVER=unix:/run/pipewire/pulse/native
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+Environment=PULSE_SERVER=unix:/run/user/1000/pulse/native
 
 # volume
 Environment=VOLUME_CONTROL=pipewire

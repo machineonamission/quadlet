@@ -2,8 +2,8 @@
 Description=Linux Voice Assistant
 
 [Container]
-#Ulimit=rtprio=90:90
-#Ulimit=memlock=-1:-1
+Ulimit=rtprio=90:90
+Ulimit=memlock=-1:-1
 Pod=smarthome.pod
 ContainerName=linux-voice-assistant
 Image=ghcr.io/ohf-voice/linux-voice-assistant-pr:266

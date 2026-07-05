@@ -8,13 +8,14 @@ Environment=EULA=TRUE
 Environment=MODPACK_PLATFORM=AUTO_CURSEFORGE
 # official curseforge api key LMAO
 Environment=CF_API_KEY=$2a$10$bL4bIL5pUWqfcO7KQtnMReakwtfHbNKh6v1uTpKlzhwoueEJQnPnm
-Environment=CF_PAGE_URL=https://www.curseforge.com/minecraft/modpacks/hosmp-26
+Environment=CF_MODPACK_ZIP=/MWF Craft.zip
+Volume=/srv/volumes/minecraft/MWF Craft.zip:/MWF Craft.zip:z
 Environment=MAX_MEMORY=8G
 Environment=MIN_MEMORY=8G
 AutoUpdate=registry
 Pull=newer
 Network=host
-Environment=MOTD="MWFCraft! (NOT HOSMP)"
+Environment=MOTD="MWF Craft! (NOT HOSMP)"
 Environment=OPS=melody_florum
 Environment=ICON=https://cdn.discordapp.com/icons/1341555504006037616/9ebb8a63f39ed8d3115481bc1672d044.png?size=64
 HealthOnFailure=restart

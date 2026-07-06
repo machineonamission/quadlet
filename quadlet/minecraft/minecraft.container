@@ -11,8 +11,8 @@ Environment=CF_API_KEY=$2a$10$bL4bIL5pUWqfcO7KQtnMReakwtfHbNKh6v1uTpKlzhwoueEJQn
 Environment=CF_MODPACK_ZIP=/MWFCraft.zip
 Environment=CF_PAGE_URL=https://www.curseforge.com/minecraft/modpacks/hosmp-26
 Volume=/srv/volumes/minecraft/MWFCraft.zip:/MWFCraft.zip:z
-Environment=MAX_MEMORY=8G
-Environment=MIN_MEMORY=8G
+Environment=MAX_MEMORY=12G
+Environment=MIN_MEMORY=12G
 AutoUpdate=registry
 Pull=newer
 Network=host

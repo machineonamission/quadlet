@@ -14,7 +14,7 @@ Pod=minepanel.pod
 Environment=NODE_ENV=production
 Environment=FRONTEND_URL=http://192.168.0.2:25503
 Environment=JWT_EXPIRES_IN=2d
-Environment=ALLOW_INSECURE_AUTH_COOKIES=false
+Environment=ALLOW_INSECURE_AUTH_COOKIES=true
 Environment=BASE_DIR=/srv/volumes/minepanel
 Environment=COMPOSE_PROJECT=
 Environment=BASE_PATH=

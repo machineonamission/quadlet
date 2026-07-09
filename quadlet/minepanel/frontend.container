@@ -1,0 +1,19 @@
+[Unit]
+Description=MinePanel Frontend
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=docker.io/ketbom/minepanel-frontend:latest
+ContainerName=minepanel-frontend
+Pod=minepanel.pod
+
+Environment=NEXT_PUBLIC_BACKEND_URL=http://localhost:8091
+Environment=NEXT_PUBLIC_BASE_PATH=
+Environment=NEXT_PUBLIC_DEFAULT_LANGUAGE=en
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

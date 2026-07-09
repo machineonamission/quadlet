@@ -1,0 +1,5 @@
+[Volume]
+VolumeName=minepanel-proxy
+Device=/srv/volumes/minepanel/proxy
+Type=none
+Options=bind

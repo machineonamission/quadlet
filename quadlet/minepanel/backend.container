@@ -1,0 +1,39 @@
+[Unit]
+Description=MinePanel Backend
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=docker.io/ketbom/minepanel-backend:latest
+ContainerName=minepanel-backend
+Pod=minepanel.pod
+
+# Static defaults, mirroring the compose file's ${VAR:-default} values.
+# Anything set in the env file below with the same key OVERRIDES these
+# (EnvironmentFile is applied after Environment=, so it wins on conflicts).
+Environment=NODE_ENV=production
+Environment=FRONTEND_URL=http://localhost:3000
+Environment=JWT_EXPIRES_IN=2d
+Environment=ALLOW_INSECURE_AUTH_COOKIES=false
+Environment=BASE_DIR=/srv/volumes/minepanel
+Environment=COMPOSE_PROJECT=
+Environment=BASE_PATH=
+
+# JWT_SECRET has NO default in the original compose file -- it's required.
+# Put it (and any optional SMTP/OIDC/SSO vars) in this file.
+# Generate a secret with: openssl rand -base64 32
+# The leading "-" makes the file optional so the unit doesn't fail if missing.
+EnvironmentFile=minepanel.env
+
+Volume=minepanel-servers.volume:/app/servers
+Volume=minepanel-data.volume:/app/data
+
+# NOTE: this must be a Docker-API-compatible socket, not left as literal
+# docker.sock. See notes below for enabling podman.socket.
+Volume=/run/podman/podman.sock:/var/run/docker.sock
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target

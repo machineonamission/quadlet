@@ -1,0 +1,22 @@
+[Unit]
+Description=MinePanel MC Router (optional Java Edition proxy routing by hostname)
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=docker.io/itzg/mc-router:1.39.1
+ContainerName=mc-router
+Pod=minepanel.pod
+
+Environment=ROUTES_CONFIG=/data/routes.json
+Environment=ROUTES_CONFIG_WATCH=true
+
+Volume=minepanel-proxy.volume:/data
+
+[Service]
+Restart=always
+
+# Intentionally NO [Install] section: compose gated this behind
+# `--profile proxy`, so it isn't auto-started here either. Before using
+# it, uncomment PublishPort=25565:25565 in minepanel.pod, then run:
+#   systemctl start mc-router.service

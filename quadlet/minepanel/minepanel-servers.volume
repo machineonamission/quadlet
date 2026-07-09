@@ -1,0 +1,5 @@
+[Volume]
+VolumeName=minepanel-servers
+Device=/srv/volumes/minepanel/servers
+Type=none
+Options=bind

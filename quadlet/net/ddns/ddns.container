@@ -5,7 +5,7 @@ Network=host
 EnvironmentFile=ddns.env
 Pod=net.pod
 #Environment=IP4_PROVIDER=cloudflare.doh
-Environment=IP6_PROVIDER=cloudflare.doh
+#Environment=IP6_PROVIDER=cloudflare.doh
 
 [Service]
 Restart=always

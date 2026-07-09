@@ -25,12 +25,12 @@ Environment=BASE_PATH=
 # The leading "-" makes the file optional so the unit doesn't fail if missing.
 EnvironmentFile=minepanel.env
 
-Volume=minepanel-servers.volume:/app/servers
-Volume=minepanel-data.volume:/app/data
+Volume=minepanel-servers.volume:/app/servers:z
+Volume=minepanel-data.volume:/app/data:z
 
 # NOTE: this must be a Docker-API-compatible socket, not left as literal
 # docker.sock. See notes below for enabling podman.socket.
-Volume=/run/podman/podman.sock:/var/run/docker.sock
+Volume=/run/podman/podman.sock:/var/run/docker.sock:ro
 
 [Service]
 Restart=always

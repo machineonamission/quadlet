@@ -1,5 +1,4 @@
 [Volume]
 VolumeName=minepanel-data
 Device=/srv/volumes/minepanel/data
-Type=none
 Options=bind

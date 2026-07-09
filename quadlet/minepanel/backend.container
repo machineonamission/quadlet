@@ -7,7 +7,7 @@ Wants=network-online.target
 Image=docker.io/ketbom/minepanel-backend:latest
 ContainerName=minepanel-backend
 Pod=minepanel.pod
-
+SecurityLabelDisable=true
 # Static defaults, mirroring the compose file's ${VAR:-default} values.
 # Anything set in the env file below with the same key OVERRIDES these
 # (EnvironmentFile is applied after Environment=, so it wins on conflicts).

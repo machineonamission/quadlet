@@ -7,7 +7,7 @@ PodName=minepanel
 # Ports are published at the pod level since all containers in the pod
 # share one network namespace (this replaces per-container PublishPort=).
 PublishPort=8091:8091
-PublishPort=3000:3000
+PublishPort=25503:3000
 
 # mc-router is optional (see mc-router.container). Uncomment this
 # before starting that container, since its port must be reserved here:

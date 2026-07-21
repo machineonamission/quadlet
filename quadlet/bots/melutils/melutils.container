@@ -9,7 +9,7 @@ Image=ghcr.io/machineonamission/melutils:master
 AutoUpdate=registry
 Pull=newer
 Volume=/srv/volumes/bot/melutils/config.py:/app/config.py:z
-Volume=/srv/volumes/bot/melutils/database.sqlite:/app/database.sqlite:z
+Volume=melutils.volume:/app/persist:z
 
 [Service]
 Restart=always

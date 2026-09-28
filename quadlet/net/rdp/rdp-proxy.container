@@ -11,6 +11,8 @@ Network=host
 
 Volume=haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro,Z
 
+Exec=haproxy -f /usr/local/etc/haproxy/haproxy.cfg
+
 [Service]
 Restart=always
 

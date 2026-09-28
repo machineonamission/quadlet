@@ -9,7 +9,7 @@ ContainerName=rdp-proxy
 
 Network=host
 
-Volume=/path/to/quadlet/rdp/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro,Z
+Volume=haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro,Z
 
 [Service]
 Restart=always

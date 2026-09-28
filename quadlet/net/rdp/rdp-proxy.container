@@ -1,0 +1,18 @@
+[Unit]
+Description=RDP TCP Proxy
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+Image=docker.io/library/haproxy:3.2-alpine
+ContainerName=rdp-proxy
+
+Network=host
+
+Volume=/path/to/quadlet/rdp/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro,Z
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

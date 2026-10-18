@@ -9,6 +9,9 @@ Image=ghcr.io/machineonamission/gorkpy:main
 AutoUpdate=registry
 Pull=newer
 Volume=/srv/volumes/bot/gork:/app/persist:z
+# Point gork at the local Ollama OpenAI-compatible endpoint (server = this host, 192.168.0.2)
+Environment=OPENAI_BASE_URL=http://192.168.0.2:11434/v1
+Environment=GORK_MODEL=qwen3:0.6b
 
 [Service]
 Restart=always

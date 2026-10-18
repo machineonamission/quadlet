@@ -31,6 +31,8 @@ HealthOnFailure="kill"
 
 [Service]
 Restart=always
+# Tiny model for the gork discord bot (sub-1B, fits the 1650). Stays resident for fast replies.
+ExecStartPost=-/usr/sbin/curl http://localhost:11434/api/pull -d '{"model": "qwen3:0.6b", "keep_alive": -1}'
 ExecStartPost=-/usr/sbin/curl http://localhost:11434/api/pull -d '{"model": "qwen3:4b-instruct"}'
 ExecStartPost=-/usr/sbin/curl http://localhost:11434/api/pull -d '{"model": "qwen3:8b"}'
 ExecStartPost=-/usr/sbin/curl http://localhost:11434/api/pull -d '{"model": "gpt-oss:120b-cloud"}'

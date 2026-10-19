@@ -1,0 +1,13 @@
+# Immich Redis / Valkey. Not publicly exposed; reached over the pod's host network.
+
+[Container]
+Pod=immich.pod
+ContainerName=immich-redis
+Image=docker.io/valkey/valkey:9
+AutoUpdate=registry
+Pull=newer
+
+Volume=immich-redis.volume:/data:z
+
+[Service]
+Restart=always

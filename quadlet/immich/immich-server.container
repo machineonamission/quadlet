@@ -1,0 +1,40 @@
+# Immich server. Shares the host network namespace with the pod's other
+# containers (database, redis, machine-learning), so it reaches them on
+# 127.0.0.1. Binds directly to the host on port 2283.
+#
+# Reach it at http://localhost:2283
+# To put it behind the nginx reverse proxy, point a proxy host at 127.0.0.1:2283.
+
+[Container]
+Pod=immich.pod
+ContainerName=immich-server
+Image=ghcr.io/immich-app/immich-server:release
+AutoUpdate=registry
+Pull=newer
+
+Environment=UPLOAD_LOCATION=/data
+Environment=IMMICH_HOST=0.0.0.0
+Environment=IMMICH_PORT=2283
+Environment=TZ=America/Chicago
+
+# Database (host networking -> 127.0.0.1 instead of the compose service name "database")
+Environment=DB_HOSTNAME=127.0.0.1
+Environment=DB_PORT=5432
+Environment=DB_USERNAME=postgres
+Environment=DB_PASSWORD=ZSptuZh8FILKqMRB6CIz6xdqjUywvKyV
+Environment=DB_DATABASE_NAME=immich
+
+# Redis / Valkey
+Environment=REDIS_HOSTNAME=127.0.0.1
+Environment=REDIS_PORT=6379
+Environment=REDIS_KEY=immich
+
+# Machine learning (host networking -> 127.0.0.1 instead of the compose service name)
+Environment=MACHINE_LEARNING_HOSTNAME=127.0.0.1
+Environment=MACHINE_LEARNING_PORT=3003
+
+Volume=immich-library.volume:/data:z
+Label=com.centurylinklabs.watchtower.enable=true
+
+[Service]
+Restart=always

@@ -1,0 +1,23 @@
+# Immich machine learning (facial recognition + smart search).
+# Runs on the RTX 5070 Ti via CUDA. Remove AddDevice and switch the tag to
+# "release" (CPU) if you don't want GPU acceleration.
+# Reached by the server over the pod's host network on port 3003.
+
+[Container]
+Pod=immich.pod
+ContainerName=immich-machine-learning
+Image=ghcr.io/immich-app/immich-machine-learning:release-cuda
+AutoUpdate=registry
+Pull=newer
+
+Environment=REDIS_HOSTNAME=127.0.0.1
+Environment=IMMICH_HOST=0.0.0.0
+Environment=IMMICH_PORT=3003
+Environment=TZ=America/Chicago
+
+Volume=immich-ml-cache.volume:/cache:z
+AddDevice=nvidia.com/gpu=all
+Label=com.centurylinklabs.watchtower.enable=true
+
+[Service]
+Restart=always

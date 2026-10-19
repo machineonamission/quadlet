@@ -1,0 +1,21 @@
+# Immich Postgres (pgvector / vectorchord image ships with the DB).
+# Data lives on the host at immich-postgresql.volume.
+# Not publicly exposed; reached over the pod's host network.
+
+[Container]
+Pod=immich.pod
+ContainerName=immich-database
+Image=ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0
+AutoUpdate=registry
+Pull=newer
+
+Environment=POSTGRES_PASSWORD=ZSptuZh8FILKqMRB6CIz6xdqjUywvKyV
+Environment=POSTGRES_USER=postgres
+Environment=POSTGRES_DB=immich
+Environment=POSTGRES_INITDB_ARGS=--data-checksums
+
+Volume=immich-postgresql.volume:/var/lib/postgresql/data:z
+ShmSize=134217728
+
+[Service]
+Restart=always

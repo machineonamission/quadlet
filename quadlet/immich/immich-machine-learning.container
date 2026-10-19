@@ -1,7 +1,7 @@
 # Immich machine learning (facial recognition + smart search).
 # Runs on the RTX 5070 Ti via CUDA. Remove AddDevice and switch the tag to
 # "release" (CPU) if you don't want GPU acceleration.
-# Reached by the server over the pod's host network on port 3003.
+# Reached by the server over the pod's host network on port 38766.
 
 [Container]
 Pod=immich.pod
@@ -12,7 +12,7 @@ Pull=newer
 
 Environment=REDIS_HOSTNAME=127.0.0.1
 Environment=IMMICH_HOST=0.0.0.0
-Environment=IMMICH_PORT=3003
+Environment=IMMICH_PORT=38766
 Environment=TZ=America/Chicago
 
 Volume=immich-ml-cache.volume:/cache:z

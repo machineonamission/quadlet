@@ -31,7 +31,7 @@ Environment=REDIS_KEY=immich
 
 # Machine learning (host networking -> 127.0.0.1 instead of the compose service name)
 Environment=MACHINE_LEARNING_HOSTNAME=127.0.0.1
-Environment=MACHINE_LEARNING_PORT=3003
+Environment=MACHINE_LEARNING_PORT=38766
 
 Volume=immich-library.volume:/data:z
 Label=com.centurylinklabs.watchtower.enable=true

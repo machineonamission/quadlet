@@ -1,0 +1,39 @@
+# Wyoming <-> OpenAI-API proxy for STT, so HA uses its core `wyoming` integration
+# (tcp://localhost:10300) instead of the local_openai_stt custom component.
+#
+# Backend: Qwen3-ASR on vLLM (smarthome/qwen3asr, :8000). Measured on that server:
+#   forced language + prompt -> silence/noise transcribe as the prompt text itself;
+#   prompt + no language     -> "" on silence/noise, names spelled right.
+# HA's Wyoming STT always sends language "en". STT_EXTRA_BODY `languages` makes the proxy
+# drop the singular `language` field (handler._apply_plural_stt_languages), and vLLM
+# ignores the unknown `languages` field, so Qwen3-ASR auto-detects. Keep it that way.
+# STT_PROMPT is a vocabulary list, not instructions (instructions get echoed verbatim).
+
+[Unit]
+Description=Wyoming OpenAI proxy (STT -> Qwen3-ASR)
+After=qwen3asr.service
+Wants=qwen3asr.service
+
+[Container]
+ContainerName=wyoming-openai
+Pod=smarthome.pod
+Image=ghcr.io/roryeckel/wyoming_openai:latest
+AutoUpdate=registry
+Pull=newer
+
+Environment=WYOMING_URI=tcp://0.0.0.0:10300
+Environment=WYOMING_LOG_LEVEL=INFO
+Environment=WYOMING_LANGUAGES=en
+Environment=STT_OPENAI_URL=http://localhost:8000/v1
+Environment=STT_OPENAI_KEY=not-needed
+Environment=STT_MODELS=Qwen/Qwen3-ASR-0.6B
+Environment=STT_TEMPERATURE=0
+Environment="STT_PROMPT=Home Assistant voice commands. Names: Jarvis, Sendspin, Roomba."
+# single-quoted so systemd keeps the inner double quotes
+Environment='STT_EXTRA_BODY={"languages":["en"]}'
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

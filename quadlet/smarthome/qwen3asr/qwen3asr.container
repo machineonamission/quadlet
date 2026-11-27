@@ -1,14 +1,28 @@
-# /etc/containers/systemd/qwen3-asr.container
+# /etc/containers/systemd/qwen3asr.container
+#
+# Qwen3-ASR-0.6B served by upstream vLLM's OpenAI-compatible /v1/audio/transcriptions
+# on :8000 (host network via smarthome.pod). HA's local_openai_stt talks to it.
+#
+# Why upstream vLLM instead of ghcr.io/malaiwah/qwen3-asr-server (untouched since 2026-04):
+# that image's old vLLM ignores the transcription `prompt` field. Current vLLM puts
+# `prompt` in Qwen3-ASR's system turn (vocabulary biasing: "send spin" -> "Sendspin"),
+# forces `language` ("en", ISO codes only) as the assistant prefix, and strips the
+# "language X<asr_text>" prefix itself. Same API, same model id, so HA needs no change.
+# Rollback: Image=ghcr.io/malaiwah/qwen3-asr-server:latest and drop the model name +
+# --host/--port from Exec (that wrapper adds them).
+#
+# vllm-openai v0.34.0 is built on CUDA 13 -> needs NVIDIA driver >= 580 on the host.
+# If the driver is older, use the v0.32.0-cu129 tag instead (CUDA 12.9).
 
 [Unit]
-Description=Qwen3-ASR
+Description=Qwen3-ASR (vLLM)
 After=network-online.target
 Wants=network-online.target
 
 [Container]
 ContainerName=qwen3-asr
 Pod=smarthome.pod
-Image=ghcr.io/malaiwah/qwen3-asr-server:latest
+Image=docker.io/vllm/vllm-openai:v0.34.0
 AutoUpdate=registry
 Pull=newer
 
@@ -16,19 +30,23 @@ AddDevice=nvidia.com/gpu=all
 SecurityLabelDisable=true
 PodmanArgs=--ipc=host
 
-
 Volume=qwen3asr.volume:/root/.cache/huggingface:z
 
-Environment=QWEN3_ASR_MODEL_ID=Qwen/Qwen3-ASR-0.6B
-Environment=VLLM_EXTRA_ARGS=--enforce-eager
-Exec=--gpu-memory-utilization 0.55 \
-  --max-model-len 256 \
+# 4 GB GPU shared with Kokoro/Ollama/immich: 0.55 of it, eager mode (no CUDA-graph
+# memory), fp8 KV, one sequence. 1.7B would not fit next to the others.
+# max-model-len 512 (was 256) leaves room for an STT prompt on top of the audio.
+Exec=Qwen/Qwen3-ASR-0.6B \
+  --host 0.0.0.0 --port 8000 \
+  --gpu-memory-utilization 0.55 \
+  --max-model-len 512 \
   --max-num-seqs 1 \
   --kv-cache-dtype fp8 \
   --enforce-eager
 
 [Service]
 Restart=always
+# first start pulls a ~10 GB image
+TimeoutStartSec=900
 
 [Install]
 WantedBy=multi-user.target

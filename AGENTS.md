@@ -25,4 +25,8 @@ Podman quadlet definitions for the always-on Fedora server and the kitchen Raspb
   then transcribes it as "Ahora.". The shim makes LVA send 1.0. Drop it once HA or LVA fixes this.
   (Pinning older LVA nightlies does NOT help: it's the HA side.)
 - Qwen3-ASR (`smarthome/qwen3asr`) listens on :8000 and Kokoro on :8880 (host network).
-  The ASR returns "Ahora." for pure silence, so that transcript means "the audio was zeros".
+  The ASR returns "Ahora." for pure digital zeros (real room noise gives ""), so that transcript
+  means "the audio was zeros". Served by upstream `vllm/vllm-openai` (not malaiwah's wrapper,
+  whose old vLLM ignored `prompt`): `/v1/audio/transcriptions` honours `language` (ISO codes
+  only: "en"; "English" is a 400) and `prompt` (vocabulary biasing, set in HA's
+  local_openai_stt options). v0.34.0 is CUDA 13 → host driver >= 580. GPU is 4 GB, shared.

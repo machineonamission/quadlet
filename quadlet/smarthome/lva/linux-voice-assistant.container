@@ -5,18 +5,12 @@ Description=Linux Voice Assistant
 Pod=smarthome.pod
 ContainerName=linux-voice-assistant
 #Image=ghcr.io/machineonamission/linux-voice-assistant:led-pipewire-wakelisten
-# Pinned 2026-11-27: nightly built from 9ab4b17 (2026-11-25 23:40 UTC), the last build
-# before every satellite started sending HA silence after the wake word (STT -> "Ahora.",
-# Qwen3-ASR's output for digital silence). Suspects: aioesphomeapi 45->46.30.1 (#570) and the
-# remote-mute changes (#489/#622). To unpin: back to :nightly + AutoUpdate=registry.
-#Image=ghcr.io/ohf-voice/linux-voice-assistant:nightly
-Image=ghcr.io/ohf-voice/linux-voice-assistant@sha256:df62718ea04bc3e3c3b6c85f96bf47daec5aecd44ae97cdaa959e217dde06d0d
+Image=ghcr.io/ohf-voice/linux-voice-assistant:nightly
 Environment=VOLUME_CONTROLLER=pipewire
 Environment=SENDSPIN_URL=ws://192.168.0.2:8927/sendspin
 #Image=ghcr.io/machineonamission/linux-voice-assistant:leds-and-buttons-events
-# AutoUpdate off while pinned to a digest (podman auto-update needs a tag)
-#AutoUpdate=registry
-Pull=missing
+AutoUpdate=registry
+Pull=newer
 AddCapability=SYS_NICE
 SecurityLabelDisable=true
 GroupAdd=audio

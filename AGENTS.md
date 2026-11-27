@@ -25,8 +25,16 @@ Podman quadlet definitions for the always-on Fedora server and the kitchen Raspb
   then transcribes it as "Ahora.". The shim makes LVA send 1.0. Drop it once HA or LVA fixes this.
   (Pinning older LVA nightlies does NOT help: it's the HA side.)
 - Qwen3-ASR (`smarthome/qwen3asr`) listens on :8000 and Kokoro on :8880 (host network).
-  The ASR returns "Ahora." for pure digital zeros (real room noise gives ""), so that transcript
-  means "the audio was zeros". Served by upstream `vllm/vllm-openai` (not malaiwah's wrapper,
-  whose old vLLM ignored `prompt`): `/v1/audio/transcriptions` honours `language` (ISO codes
-  only: "en"; "English" is a 400) and `prompt` (vocabulary biasing, set in HA's
-  local_openai_stt options). v0.34.0 is CUDA 13 → host driver >= 580. GPU is 4 GB, shared.
+  Served by upstream `vllm/vllm-openai` (not malaiwah's wrapper, whose old vLLM ignored
+  `prompt`). `/v1/audio/transcriptions` honours `prompt` (vocabulary biasing) and `language`
+  (ISO codes only: "en"; "English" is a 400). Measured behaviour (3 s clips):
+  | request                  | digital zeros   | room noise      | speech          |
+  | no language, no prompt   | "Ahora."        | ""              | ok              |
+  | language=en              | "I'm not sure." | "I'm not sure." | ok              |
+  | language=en + prompt     | echoes prompt   | echoes prompt   | names fixed     |
+  | prompt, no language      | ""              | ""              | names fixed     |
+  So HA sends prompt and NO language (local patch, see home-assistant-server/AGENTS.md).
+  GPU is a GTX 1650 (sm_75, 3.64 GiB usable, shared with Kokoro). vLLM 0.34 gotchas on it:
+  no fp8 KV cache (needs SM89), no bf16 (runs fp16), and its extensible KV cache bootloops
+  ("No available memory for the cache blocks") → `--no-enable-extensible-kv-cache`.
+  v0.34.0 is CUDA 13 → host driver >= 580 (host has 620).

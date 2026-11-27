@@ -35,13 +35,15 @@ Volume=qwen3asr.volume:/root/.cache/huggingface:z
 # GPU is a GTX 1650 (3.64 GiB usable, Turing sm_75), shared with Kokoro (~0.8 GiB).
 # Eager mode (no CUDA-graph memory), one sequence. 1.7B would not fit.
 # No --kv-cache-dtype fp8: vLLM >= 0.34 refuses it below SM89 (the old wrapper allowed
-# it). Weights run fp16 (no bf16 on Turing) = 1.53 GiB; at 0.55 the KV cache got nothing
-# after profiling + warmup ("No available memory for the cache blocks"), so 0.72 (~2.6 GiB,
-# about what the old container's EngineCore used anyway).
+# it). Weights run fp16 (no bf16 on Turing): 1.63 GiB + 0.22 GiB peak activations.
+# --no-enable-extensible-kv-cache: v0.34's new extensible KV cache fits "0 blocks" on this
+# card even with 1+ GiB free ("No available memory for the cache blocks") and bootloops.
+# 0.6 of 3.64 GiB leaves ~0.3 GiB KV (~2.8k tokens; one 512-token request needs 512).
 # max-model-len 512 (was 256) leaves room for an STT prompt on top of the audio.
 Exec=Qwen/Qwen3-ASR-0.6B \
   --host 0.0.0.0 --port 8000 \
-  --gpu-memory-utilization 0.72 \
+  --gpu-memory-utilization 0.6 \
+  --no-enable-extensible-kv-cache \
   --max-model-len 512 \
   --max-num-seqs 1 \
   --enforce-eager

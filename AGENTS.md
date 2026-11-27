@@ -15,10 +15,14 @@ Podman quadlet definitions for the always-on Fedora server and the kitchen Raspb
 - **Sync does not restart containers.** After a push, restart the changed units by hand
   (`systemctl restart <unit>` on the host, or Cockpit).
 
-## Pins / gotchas
-- **LVA (`*/smarthome/lva/linux-voice-assistant.container`) is pinned to a digest**, the
-  2026-11-25 nightly (commit `9ab4b17`), with AutoUpdate off. Later nightlies made both
-  satellites stream silence to HA after the wake word: Qwen3-ASR transcribes digital silence as
-  "Ahora.". Suspects are aioesphomeapi 46.30.1 (#570) and the remote-mute changes (#489/#622).
-  Unpin once upstream is fixed. Stable `1.1.18` lacks `SENDSPIN_URL`/`VOLUME_CONTROLLER`.
+## Gotchas
+- quadlet-sync **flattens** the repo: every file under `quadlet/` (or `rpi_quadlet/`) lands
+  directly in `/etc/containers/systemd/`, so non-unit files need globally unique names.
+- **LVA sitecustomize shim** (`*/smarthome/lva/lva_sitecustomize.py`, mounted as
+  `/app/patches/sitecustomize.py` with `PYTHONPATH=/app/patches`, identical in both dirs).
+  HA 2026.12 (core #190096) multiplies satellite audio by `audio_settings.volume_multiplier`.
+  LVA never sends audio_settings, so HA reads protobuf 0.0 and the audio becomes silence; Qwen3-ASR
+  then transcribes it as "Ahora.". The shim makes LVA send 1.0. Drop it once HA or LVA fixes this.
+  (Pinning older LVA nightlies does NOT help: it's the HA side.)
 - Qwen3-ASR (`smarthome/qwen3asr`) listens on :8000 and Kokoro on :8880 (host network).
+  The ASR returns "Ahora." for pure silence, so that transcript means "the audio was zeros".

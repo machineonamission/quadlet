@@ -19,6 +19,11 @@ Volume=wakeword_data.volume:/app/local:z
 Volume=lva-configuration.volume:/app/configuration:z
 Volume=custom-wakewords.volume:/app/wakewords/custom:z
 Volume=/etc/localtime:/etc/localtime:ro
+# HA 2026.12 multiplies satellite audio by audio_settings.volume_multiplier, which LVA
+# never sends (-> protobuf 0.0 -> silence -> STT "Ahora."). This shim makes LVA send 1.0.
+# quadlet-sync flattens the repo, so the file lands at /etc/containers/systemd/.
+Volume=/etc/containers/systemd/lva_sitecustomize.py:/app/patches/sitecustomize.py:ro
+Environment=PYTHONPATH=/app/patches
 #Volume=/etc/timezone:/etc/timezone:ro
 Volume=/run/pipewire:/run/pipewire:ro
 
